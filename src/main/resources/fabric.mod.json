@@ -3,13 +3,13 @@
 	"id": "icy_dungeons",
 	"version": "${version}",
 	"name": "Icy_Dungeons",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This is a mod that adds a custom made icy dungeon with new items and mobs",
 	"authors": [
-		"Me!"
+		"Haikmet"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Haikmet/Icy_Dungeons"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/icy_dungeons/icon.png",
