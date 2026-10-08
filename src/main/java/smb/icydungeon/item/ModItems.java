@@ -12,15 +12,28 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.level.Level;
 import smb.icydungeon.Icy_Dungeons;
+import smb.icydungeon.item.custom.ModItemIds;
+import smb.icydungeon.item.projectile.IcicleShardItem;
 
 import java.util.function.Function;
 
 public class ModItems {
 
+    public static final Item ICICLE_SHARD = registerItem(
+            ModItemIds.ICICLE_SHARD,
+            IcicleShardItem::new,
+            new Item.Properties().stacksTo(16)
+    );
 
-    private static Item registerItem(String name, Function<Item.Properties, Item> itemFunction) {
-        return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Icy_Dungeons.MOD_ID, name),
-                itemFunction.apply(new  Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Icy_Dungeons.MOD_ID, name)))));
+
+    public static Item registerItem(ResourceKey<Item> itemKey, Function<Item.Properties, Item> itemFactory, Item.Properties settings) {
+        // Create the item instance.
+        Item item = itemFactory.apply(settings.setId(itemKey));
+
+        // Register the item.
+        Registry.register(BuiltInRegistries.ITEM, itemKey, item);
+
+        return item;
     }
 
     public static void registerModItems() {
