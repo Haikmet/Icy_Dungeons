@@ -8,11 +8,11 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import smb.icydungeon.Icy_Dungeons;
-import smb.icydungeon.item.projectile.IcicleShardEntity;
+import smb.icydungeon.entity.projectile.IcicleShardEntity;
 
 public class ModEntities {
 
-    public static final EntityType<IcicleShardEntity> ICICLE_SHARD = register(
+    public static final EntityType<IcicleShardEntity> ICICLE_SHARD = registerEntity(
             create("icicle_shard"),
             EntityType.Builder.<IcicleShardEntity>of(IcicleShardEntity::new, MobCategory.MISC)
     );
@@ -21,9 +21,10 @@ public class ModEntities {
         return ResourceKey.create(Registries.ENTITY_TYPE, Icy_Dungeons.id(name));
     }
 
-    private static <T extends Entity> EntityType<T> register(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
+    private static <T extends Entity> EntityType<T> registerEntity(ResourceKey<EntityType<?>> key, EntityType.Builder<T> builder) {
         return Registry.register(BuiltInRegistries.ENTITY_TYPE, key, builder.build(key));
     }
 
-    public static void init() {}
+    public static void registerModEntities() {
+    }
 }

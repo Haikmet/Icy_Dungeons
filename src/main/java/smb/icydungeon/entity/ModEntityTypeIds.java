@@ -1,4 +1,4 @@
-package smb.icydungeon.item.custom;
+package smb.icydungeon.entity;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;

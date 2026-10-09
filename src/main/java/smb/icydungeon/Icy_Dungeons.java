@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import smb.icydungeon.item.ModEntities;
 import smb.icydungeon.item.ModItems;
 
 public class Icy_Dungeons implements ModInitializer {
@@ -19,5 +20,6 @@ public class Icy_Dungeons implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
+		ModEntities.registerModEntities();
 	}
 }
