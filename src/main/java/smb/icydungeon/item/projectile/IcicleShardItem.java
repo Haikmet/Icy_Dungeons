@@ -7,16 +7,13 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.ProjectileItem;
-import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
 import smb.icydungeon.entity.projectile.IcicleShardEntity;
 
-import java.util.List;
 
 
 public class IcicleShardItem extends Item implements ProjectileItem {
@@ -28,14 +25,12 @@ public class IcicleShardItem extends Item implements ProjectileItem {
         super(properties);
     }
 
-    public static Tool createToolProperties() {
-        return new Tool(List.of(), 1.0F, 2, true);
-    }
-
+    @Override
     public ItemUseAnimation getUseAnimation(final ItemStack itemStack) {
         return ItemUseAnimation.TRIDENT;
     }
 
+    @Override
     public int getUseDuration(final ItemStack itemStack, final LivingEntity user) {
         return 72000;
     }
@@ -55,6 +50,7 @@ public class IcicleShardItem extends Item implements ProjectileItem {
 
         if (!level.isClientSide()) {
             IcicleShardEntity shard = new IcicleShardEntity(level, player, itemStack.copyWithCount(1));
+            shard.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, PROJECTILE_SHOOT_POWER, 1.0F);
             level.addFreshEntity(shard);
         }
 
@@ -66,7 +62,6 @@ public class IcicleShardItem extends Item implements ProjectileItem {
     @Override
     public Projectile asProjectile(Level level, Position position, ItemStack itemStack, Direction direction) {
         IcicleShardEntity icicleShard = new IcicleShardEntity(level, position.x(), position.y(), position.z(), itemStack.copyWithCount(1));
-        icicleShard.pickup = AbstractArrow.Pickup.DISALLOWED;
         return icicleShard;
     }
 }

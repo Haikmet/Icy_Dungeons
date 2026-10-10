@@ -18,6 +18,9 @@
 		"main": [
 			"smb.icydungeon.Icy_Dungeons"
 		],
+		"client": [
+			"smb.icydungeon.Icy_DungeonsClient"
+		],
 		"fabric-datagen": [
 			"smb.icydungeon.Icy_DungeonsDataGenerator"
 		]
